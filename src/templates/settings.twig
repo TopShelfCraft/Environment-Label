@@ -1,0 +1,31 @@
+{#
+This template generates the Settings form in the CP.
+#}
+
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'Label Text',
+    instructions: 'Enter the environment-specific label text here. _(This text will be parsed as a Twig template, so it can include variables.)_',
+    id: 'labelText',
+    name: 'labelText',
+    value: settings['labelText']})
+}}
+
+{{ forms.colorField({
+    label: 'Label Color',
+    instructions: 'Choose the background color for the label.',
+    id: 'labelColor',
+    name: 'labelColor',
+    value: settings['labelColor']})
+}}
+
+{{ forms.colorField({
+    label: 'Text Color',
+    instructions: 'Choose the text color for the label.',
+    id: 'textColor',
+    name: 'textColor',
+    value: settings['textColor']})
+}}

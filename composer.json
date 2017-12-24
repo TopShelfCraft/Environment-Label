@@ -1,0 +1,44 @@
+{
+    "name": "topshelfcraft/environment-label",
+    "description": "...so you don't forget where you are.",
+    "type": "craft-plugin",
+    "version": "3.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "environment label"
+    ],
+    "support": {
+        "docs": "https://raw.githubusercontent.com/TopShelfCraft/Environment-Label",
+        "issues": "https://github.com/TopShelfCraft/Environment-Label/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Top Shelf Craft (Michael Rog)",
+            "homepage": "https://topshelfcraft.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC3"
+    },
+    "autoload": {
+        "psr-4": {
+          "topshelfcraft\\environmentlabel\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Environment Label",
+        "handle": "environment-label",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/TopShelfCraft/Environment-Label/master/CHANGELOG.md",
+        "components": {
+            "label": "topshelfcraft\\environmentlabel\\services\\Label"
+        },
+        "class": "topshelfcraft\\environmentlabel\\EnvironmentLabel"
+    }
+}
