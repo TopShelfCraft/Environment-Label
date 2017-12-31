@@ -12,9 +12,10 @@ namespace topshelfcraft\environmentlabel;
 
 use Craft;
 use craft\base\Plugin;
+use craft\web\View;
 use topshelfcraft\environmentlabel\models\Settings;
 use topshelfcraft\environmentlabel\services\Label;
-use topshelfcraft\environmentlabel\twigextensions\EnvironmentLabelTwigExtension;
+use yii\base\Event;
 
 
 /**
@@ -35,8 +36,9 @@ class EnvironmentLabel extends Plugin
 	 * Static properties
 	 */
 
+
     /**
-     * @var EnvironmentLabel
+     * @var EnvironmentLabel $plugin
      */
     public static $plugin;
 
@@ -44,6 +46,7 @@ class EnvironmentLabel extends Plugin
     /*
      * Public methods
      */
+
 
     /**
      * Initializes the plugin, sets its static self-reference, registers the Twig extension,
@@ -55,9 +58,15 @@ class EnvironmentLabel extends Plugin
         parent::init();
         self::$plugin = $this;
 
-		Craft::$app->view->registerTwigExtension(new EnvironmentLabelTwigExtension());
+		Craft::$app->getView()->getTwig()->addGlobal('environmentLabel', EnvironmentLabel::$plugin->label);
 
-		EnvironmentLabel::$plugin->label->doItBaby();
+		Event::on(
+			View::class,
+			View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
+			function (Event $event) {
+				EnvironmentLabel::$plugin->label->doItBaby();
+			}
+		);
 
     }
 

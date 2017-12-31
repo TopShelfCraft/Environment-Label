@@ -126,7 +126,7 @@ No you haven't.
 
 ## Yes, I believe I have.
 
-Well, alright. Please open a [GitHub Issue](https://github.com/topshelfcraft/Environment-Label/issues), and if you're feeling ambitious, submit a PR to the `dev` branch.
+Well, alright. Please open a [GitHub Issue](https://github.com/topshelfcraft/Environment-Label/issues), and if you're feeling ambitious, submit a PR to the `3.x.dev` branch.
 
 
 * * *

@@ -2,7 +2,23 @@
 
 _A plugin for Craft CMS 3.x to help distinguish your Craft environments ...so you don't forget where you are._
 
-The format of this file is based on [Keep a Changelog](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/).
+The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
+
+
+## 3.1.1 - 2017-12-31
+
+### Added
+
+- The `environmentLabel` Twig global now provides access directly to the `Label` service.
+
+### Fixed
+
+- The label text is now rendered later in the request (in response to the View's `BEFORE_RENDER_PAGE_TEMPLATE` event, rather than during the plugin initialization). This allows other plugins to register Twig extensions before we first use Twig to render the label text.
+
+### Removed
+
+- Removed the `EnvironmentLabelTwigExtension` in favor of a global pass-through to the Label service.
+
 
 ## 3.0.0 - 2017-12-25
 
