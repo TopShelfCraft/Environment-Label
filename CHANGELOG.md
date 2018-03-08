@@ -5,6 +5,13 @@ _A plugin for Craft CMS 3.x to help distinguish your Craft environments ...so yo
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.1.2 - 2018-03-08
+
+### Fixed
+
+- Removed a slightly overzealous typehint that causes an error in PHP 7.0 (since the `void` return type wasn't added until 7.1).
+
+
 ## 3.1.1 - 2017-12-31
 
 ### Added

@@ -161,7 +161,7 @@ class Label extends Component
      * If we're in an authenticated CP request, the label is added to the CP,
 	 * and some JS variables are injected for convenience debugging things in the console.
      */
-    public function doItBaby(): void
+    public function doItBaby()
     {
 
         if (
