@@ -43,8 +43,8 @@ return [
 	
     'showLabel' => true,
     'labelText' => CRAFT_ENVIRONMENT,
-    'prefix' => null,
-    'suffix' => null,
+    'prefixText' => null,
+    'suffixText' => null,
     'labelColor' => '#cc5643',
     'textColor' => '#ffffff',
 	
