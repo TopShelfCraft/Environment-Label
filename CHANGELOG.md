@@ -5,6 +5,14 @@ _A plugin for Craft CMS 3.x to help distinguish your Craft environments ...so yo
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.1.5 - 2018-11-02
+
+### Fixed
+  
+- Fixed order-of-loading conflicts that could generate an error when Environment Label tried to add a Twig global. ([#6](https://github.com/TopShelfCraft/Environment-Label/issues/6))
+- Add `craftcms/cms` 3.0 as a requirement. (Required by plugin store)
+
+
 ## 3.1.4 - 2018-06-05
 
 ### Fixed

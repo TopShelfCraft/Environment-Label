@@ -15,6 +15,7 @@ use craft\base\Plugin;
 use craft\web\View;
 use topshelfcraft\environmentlabel\models\Settings;
 use topshelfcraft\environmentlabel\services\Label;
+use topshelfcraft\environmentlabel\twigextensions\EnvironmentLabelTwigExtension;
 use yii\base\Event;
 
 
@@ -55,10 +56,10 @@ class EnvironmentLabel extends Plugin
     public function init()
     {
 
-        parent::init();
-        self::$plugin = $this;
+		parent::init();
+		self::$plugin = $this;
 
-		Craft::$app->getView()->getTwig()->addGlobal('environmentLabel', EnvironmentLabel::$plugin->label);
+		Craft::$app->getView()->registerTwigExtension(new EnvironmentLabelTwigExtension());
 
 		Event::on(
 			View::class,
