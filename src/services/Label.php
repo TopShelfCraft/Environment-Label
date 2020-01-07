@@ -90,8 +90,7 @@ class Label extends Component
 	 */
 	public function getTargetSelector(): string
 	{
-		// TODO: Make the target selector customizable via Settings (?)
-		return "#main-container:before";
+		return (string) EnvironmentLabel::$plugin->getSettings()->targetSelector;
 	}
 
 	/**
@@ -110,7 +109,7 @@ class Label extends Component
 			{
 					display: block;
 					background-color: #cc5643;
-					background-image: linear-gradient(#da5a47, #cc5643);
+					background-image: linear-gradient(#dc5643, #cc5643);
 					color: #ffffff;
 					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 					text-align: right;

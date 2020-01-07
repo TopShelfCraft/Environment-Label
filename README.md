@@ -47,6 +47,7 @@ return [
     'suffixText' => null,
     'labelColor' => '#cc5643',
     'textColor' => '#ffffff',
+    'targetSelector' => '#global-header:before',
 	
 ];
 ```

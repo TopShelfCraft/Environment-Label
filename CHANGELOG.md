@@ -5,6 +5,14 @@ _A plugin for Craft CMS 3.x to help distinguish your Craft environments ...so yo
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.2.0 - 2019-01-06
+
+### Added
+  
+- Added compatibility with new (Craft 3.4+) control panel layout. ([#8](https://github.com/TopShelfCraft/Environment-Label/issues/8))
+- Added the `targetSelector` setting, which optionally overrides the CSS selector for the label banner.
+
+
 ## 3.1.5 - 2018-11-02
 
 ### Fixed

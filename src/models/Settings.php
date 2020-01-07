@@ -10,6 +10,7 @@
 
 namespace topshelfcraft\environmentlabel\models;
 
+use Craft;
 use craft\base\Model;
 
 
@@ -54,5 +55,26 @@ class Settings extends Model
 	 * @var string|null
 	 */
 	public $suffixText = null;
+
+	/**
+	 * @var string|null
+	 */
+	public $targetSelector = null;
+
+	/*
+	 * Public functions
+	 */
+
+	public function init()
+	{
+
+		parent::init();
+
+		if (empty($this->targetSelector))
+		{
+			$this->targetSelector = version_compare(Craft::$app->getInfo()->version, '3.4.0-beta', '>=') ? "#global-header:before" : "#main-container:before";
+		}
+
+	}
 
 }
