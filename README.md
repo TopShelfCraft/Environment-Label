@@ -5,8 +5,6 @@ _...so you don't forget where you are._
 **A [Top Shelf Craft](https://topshelfcraft.com) creation**  
 in collaboration with [Kind](https://madebykind.com/)
 
-&mdash; Based on the original [LabelEnvironment](https://github.com/madebykind/craft.labelenvironment) plugin by [Tom Davies](https://github.com/tomdavies)
-
 
 ### TL;DR.
 
@@ -21,12 +19,19 @@ The colors and text of the environment label are configurable via the plugin con
 
 ## Installation
 
-Visit the _Plugin Store_ in your Craft control panel, search for **Environment Label**, and click to _Install_ the plugin.
+Visit the _Plugin Store_ in your Craft control panel, search for **Environment Label**, and click to **Install** the plugin.
+
+You can also install the package via Composer.
+```
+composer require topshelfcraft/environment-label
+```
+
+Then, navigate to the _Plugins_ section of the control panel, find **Environment Label** in the list, and click the **Install** button.
 
 
 ## Configuration
 
-By default, the environment label will pull in the value of Craft's `CRAFT_ENVIRONMENT` constant, which is set to the current hostname unless you override it.
+By default, the environment label will display the value of Craft's `CRAFT_ENVIRONMENT` constant, which is usually set to the current hostname unless you override it.
 
 _(In other words, out of the box, you get a red banner with white text that alerts you to the current hostname.)_
 
@@ -34,13 +39,10 @@ You can use a plugin config file to tweak the appearance and text of the environ
 
 Simply add an `environment-label.php` file to your `config` directory.
 
-(There is a sample plugin config included in the plugin files - `config/environment-label.php` - which you can copy and use as a starter.
-
 ```php
 <?php
 
 return [
-	
     'showLabel' => true,
     'labelText' => CRAFT_ENVIRONMENT,
     'prefixText' => null,
@@ -48,25 +50,7 @@ return [
     'labelColor' => '#cc5643',
     'textColor' => '#ffffff',
     'targetSelector' => '#global-header:before',
-	
 ];
-```
-
-I suggest referencing [PHP environment variables](http://php.net/manual/en/function.getenv.php), rather than using hard-coded values, to make your configuration more consistently maintainable.
-
-I also _highly recommend_ using the [PHP dot-env](https://github.com/vlucas/phpdotenv) package to easily set and deploy environment variables across your installations. (The [Craft starter project](https://github.com/craftcms/craft)) ships with dot-env included.)
-
-For example, your `environment-label.php` config file might use environment variables set by the server:
-
-```php
-<?php
-
-return [
-	
-    'showLabel' => getenv('CRAFT_ENV_SHOW_LABEL'),
-    'labelText' => getenv('CRAFT_ENV_LABEL_TEXT'),
-	
-);
 ```
 
 For added flexibility, the full text of the label will be rendered as a Twig template, so you can also include template variables if you want:
@@ -75,14 +59,12 @@ For added flexibility, the full text of the label will be rendered as a Twig tem
 <?php
 
 return [
-	
     'suffixText' => " // {{ currentUser }}",
-    
 );
 ```
 
 
-## Changing Settings in the Control Panel
+## Settings in the Control Panel
 
 You can also make basic changes to the text and appearance of the environment label via the plugin Settings page.
 
@@ -117,7 +99,7 @@ window.CRAFT_ENVIRONMENT_LABEL
 
 ## What are the system requirements?
 
-Craft 3.0+ and PHP 7.0+
+Craft 4.0+ and PHP 8.0.2+
 
 
 ## I've found a bug.
@@ -127,13 +109,13 @@ No you haven't.
 
 ## Yes, I believe I have.
 
-Well, alright. Please open a [GitHub Issue](https://github.com/topshelfcraft/Environment-Label/issues), and if you're feeling ambitious, submit a PR to the `3.x.dev` branch.
+Well, alright. Please open a [GitHub Issue](https://github.com/topshelfcraft/Environment-Label/issues), and if you're feeling ambitious, submit a PR to the `4.x.dev` branch.
 
 
 * * *
 
 ### Contributors:
 
-  - Plugin development: [Michael Rog](http://michaelrog.com) / @michaelrog
+  - Plugin development: [Michael Rog](https://michaelrog.com) / @michaelrog
   - Craft 2 plugin development: [Tom Davies](https://github.com/tomdavies) / @metadaptive
   - Icon: [NAS](http://nasztu.com/), via [The Noun Project](https://thenounproject.com/search/?q=label&i=28588)

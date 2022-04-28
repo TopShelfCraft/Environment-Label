@@ -1,8 +1,31 @@
 # Environment Label Changelog
 
-_A plugin for Craft CMS 3.x to help distinguish your Craft environments ...so you don't forget where you are._
+_A plugin for Craft CMS 4.x to help distinguish your Craft environments ...so you don't forget where you are._
 
-The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
+The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
+
+
+## 4.0.0 - 2022-04-27
+
+### Improved
+
+- Environment Label is ready for Craft 4!
+
+### Changed
+
+- Fully typed `Settings` properties.
+- Moved `Label` component to the root namespace.
+- Moved `Settings` model to the root namespace.
+- Moved `TwigExtension` to the root namespace.
+
+### Deprecated
+
+- Deprecated `$textColor` and `$labelColor`. (These styles will probably be specified via custom CSS in future versions.) 
+- Deprecated `$prefixText`, `getPrefixText()`, `$suffixText`, and `getSuffixText()`. (These will probably be consolidated in future versions, so that the text of the label only includes `$labelText`.) 
+
+### Removed
+
+- Removed `EnvironmentLabel::$plugin` static accessor; use `getInstance()` instead.
 
 
 ## 3.2.0 - 2019-01-06

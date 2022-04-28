@@ -1,111 +1,75 @@
 <?php
-/**
- * Environment Label
- *
- * @author     Michael Rog <michael@michaelrog.com>, Tom Davies <tom@madebykind.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2017, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/topshelfcraft/Environment-Label
- */
-
 namespace topshelfcraft\environmentlabel;
 
 use Craft;
-use craft\base\Plugin;
 use craft\web\View;
-use topshelfcraft\environmentlabel\models\Settings;
-use topshelfcraft\environmentlabel\services\Label;
-use topshelfcraft\environmentlabel\twigextensions\EnvironmentLabelTwigExtension;
+use topshelfcraft\base\Plugin;
 use yii\base\Event;
 
-
 /**
- * @author   Michael Rog <michael@michaelrog.com>
- * @package  EnvironmentLabel
- * @since    3.0.0
+ * @author Michael Rog <michael@michaelrog.com>, Tom Davies <tom@madebykind.com>
+ * @link https://topshelfcraft.com
+ * @copyright Copyright 2022, Top Shelf Craft (Michael Rog)
  *
- * @property  Label $label
- * @property  Settings $settings
+ * @property Label $label
  *
- * @method    Settings getSettings()
+ * @method Settings getSettings()
  */
 class EnvironmentLabel extends Plugin
 {
 
+	public bool $hasCpSection = false;
+	public bool $hasCpSettings = true;
+	public string $schemaVersion = "1.0.0";
+	public ?string $changelogUrl = "https://raw.githubusercontent.com/TopShelfCraft/Environment-Label/master/CHANGELOG.md";
 
-	/*
-	 * Static properties
-	 */
-
-
-    /**
-     * @var EnvironmentLabel $plugin
-     */
-    public static $plugin;
-
-
-    /*
-     * Public methods
-     */
-
-
-    /**
-     * Initializes the plugin, sets its static self-reference, registers the Twig extension,
+	/**
+	 * Initializes the plugin, sets its static self-reference, registers the Twig extension,
 	 * and adds the environment label as appropriate.
-     */
-    public function init()
-    {
+	 */
+	public function init()
+	{
+
+		$this->setComponents([
+			'label' => Label::class
+		]);
 
 		parent::init();
-		self::$plugin = $this;
 
-		Craft::$app->getView()->registerTwigExtension(new EnvironmentLabelTwigExtension());
+		Craft::$app->getView()->registerTwigExtension(new TwigExtension());
 
 		Event::on(
 			View::class,
 			View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
 			function (Event $event) {
-				EnvironmentLabel::$plugin->label->doItBaby();
+				EnvironmentLabel::getInstance()->label->doItBaby();
 			}
 		);
 
-    }
+	}
 
-
-    /*
-     * Protected methods
-     */
-
-
-    /**
-     * Creates and returns the model used to store the plugin’s settings.
-     *
-     * @return \topshelfcraft\environmentlabel\models\Settings|null
-     */
-    protected function createSettingsModel()
-    {
-        return new Settings();
-    }
-
+	/**
+	 * Creates and returns the model used to store the plugin’s settings.
+	 */
+	protected function createSettingsModel(): Settings
+	{
+		return new Settings();
+	}
 
 	/**
 	 * Returns the rendered settings HTML, which will be inserted into the content
 	 * block on the settings page.
 	 *
 	 * @return string The rendered settings HTML
-	 *
-	 * @throws \Twig_Error_Loader
-	 * @throws \yii\base\Exception
 	 */
-    protected function settingsHtml(): string
-    {
-        return Craft::$app->view->renderTemplate(
-            'environment-label/settings',
-            [
-                'settings' => $this->getSettings()
-            ]
-        );
-    }
-
+	protected function settingsHtml(): string
+	{
+		return Craft::$app->view->renderTemplate(
+			'environment-label/settings',
+			[
+				'settings' => $this->getSettings()
+			]
+		);
+	}
 
 }
