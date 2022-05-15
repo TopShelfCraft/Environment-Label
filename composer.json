@@ -22,17 +22,17 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^4.0.0-RC1",
-        "topshelfcraft/base": "^4.0"
+        "craftcms/cms": "^4.0",
+        "topshelfcraft/base": "^4.0.1"
     },
     "autoload": {
         "psr-4": {
-          "topshelfcraft\\environmentlabel\\": "src/"
+          "TopShelfCraft\\EnvironmentLabel\\": "src/"
         }
     },
     "extra": {
         "name": "Environment Label",
         "handle": "environment-label",
-        "class": "topshelfcraft\\environmentlabel\\EnvironmentLabel"
+        "class": "TopShelfCraft\\EnvironmentLabel\\EnvironmentLabel"
     }
 }

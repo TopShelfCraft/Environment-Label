@@ -1,9 +1,9 @@
 <?php
-namespace topshelfcraft\environmentlabel;
+namespace TopShelfCraft\EnvironmentLabel;
 
 use Craft;
 use craft\web\View;
-use topshelfcraft\base\Plugin;
+use TopShelfCraft\base\Plugin;
 use yii\base\Event;
 
 /**

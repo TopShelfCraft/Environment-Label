@@ -1,5 +1,5 @@
 <?php
-namespace topshelfcraft\environmentlabel;
+namespace TopShelfCraft\EnvironmentLabel;
 
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;

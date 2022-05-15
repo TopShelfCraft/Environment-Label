@@ -1,5 +1,5 @@
 <?php
-namespace topshelfcraft\environmentlabel;
+namespace TopShelfCraft\EnvironmentLabel;
 
 use Craft;
 
