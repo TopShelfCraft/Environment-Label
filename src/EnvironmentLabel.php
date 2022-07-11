@@ -24,8 +24,7 @@ class EnvironmentLabel extends Plugin
 	public ?string $changelogUrl = "https://raw.githubusercontent.com/TopShelfCraft/Environment-Label/master/CHANGELOG.md";
 
 	/**
-	 * Initializes the plugin, sets its static self-reference, registers the Twig extension,
-	 * and adds the environment label as appropriate.
+	 * Initializes the plugin, registers the Twig extension, and adds the environment label as appropriate.
 	 */
 	public function init()
 	{
