@@ -23,7 +23,7 @@ class Settings extends Model
 	 */
 	public ?string $prefixText = null;
 
-	public ?string $labelText = CRAFT_ENVIRONMENT;
+	public ?string $labelText = null;
 
 	/**
 	 * @deprecated

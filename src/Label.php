@@ -24,7 +24,10 @@ class Label
 
 	public function getLabelText(): string
 	{
-		return (string) EnvironmentLabel::getInstance()->getSettings()->labelText;
+		// We support using `CRAFT_ENVIRONMENT` as the default label text, for backwards compatibility from 3.x.
+		// TODO: Remove the default text in 5.x.
+		return (string) EnvironmentLabel::getInstance()->getSettings()->labelText
+			?? constant('CRAFT_ENVIRONMENT');
 	}
 
 	public function getRenderedText(): string
