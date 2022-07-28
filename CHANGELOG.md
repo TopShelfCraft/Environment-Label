@@ -4,12 +4,23 @@ _A plugin for Craft CMS 4.x to help distinguish your Craft environments ...so yo
 
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
+## 4.0.2 - 2022-07-28
+
+### Fixed
+
+- Fixed some additional errors that would occur if the `CRAFT_ENVIRONMENT` constant was not defined. ([#12](https://github.com/TopShelfCraft/Environment-Label/issues/12))
+
+### Deprecated
+
+- Deprecated `getJs()` and slated JS features for removal in 5.x, because they're not actually very useful. (Please open an issue if you're using these features!)
+
 
 ## 4.0.1 - 2022-07-11
 
 ### Fixed
 
 - Fixed an error that occurred when instantiating a `Settings` model, if the `CRAFT_ENVIRONMENT` constant was not defined.
+
 
 ## 4.0.0 - 2022-04-27
 

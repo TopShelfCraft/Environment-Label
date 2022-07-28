@@ -26,8 +26,8 @@ class Label
 	{
 		// We support using `CRAFT_ENVIRONMENT` as the default label text, for backwards compatibility from 3.x.
 		// TODO: Remove the default text in 5.x.
-		return (string) EnvironmentLabel::getInstance()->getSettings()->labelText
-			?? constant('CRAFT_ENVIRONMENT');
+		$CRAFT_ENVIRONMENT = defined('CRAFT_ENVIRONMENT') ? CRAFT_ENVIRONMENT : null;
+		return (string) (EnvironmentLabel::getInstance()->getSettings()->labelText ?? $CRAFT_ENVIRONMENT);
 	}
 
 	public function getRenderedText(): string
@@ -90,11 +90,19 @@ class Label
 
 	/**
 	 * @return string
+	 *
+	 * @deprecated JS features are slated for removal in 5.x. Please open an Issue if you're using these features!
+	 * @todo Remove in 5.x
 	 */
 	public function getJs(): string
 	{
 
-		$js = "window.CRAFT_ENVIRONMENT = " . json_encode(CRAFT_ENVIRONMENT) . ";";
+		/*
+		 * We include `CRAFT_ENVIRONMENT` for backwards compatibility from 3.x, but that constant is no longer
+		 * set by default in the Craft starter project, so we'll eventually remove references to it.
+		 */
+		$CRAFT_ENVIRONMENT = defined('CRAFT_ENVIRONMENT') ? CRAFT_ENVIRONMENT : null;
+		$js = "window.CRAFT_ENVIRONMENT = " . json_encode($CRAFT_ENVIRONMENT) . ";";
 
 		$props = get_object_vars(EnvironmentLabel::getInstance()->getSettings());
 		$props['renderedText'] = $this->getRenderedText();
@@ -118,6 +126,7 @@ class Label
 		) {
 			$view = Craft::$app->getView();
 			$view->registerCss($this->getCss());
+			// TODO: Remove in 5.x 👇
 			$view->registerJs($this->getJs());
 		}
 
