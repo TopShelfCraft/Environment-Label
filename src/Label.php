@@ -38,7 +38,7 @@ class Label
 
 	public function getLabelColor(): string
 	{
-		return EnvironmentLabel::getInstance()->getSettings()->labelColor;
+		return $this->_normalizeCssColor(EnvironmentLabel::getInstance()->getSettings()->labelColor);
 	}
 
 	/**
@@ -46,7 +46,7 @@ class Label
 	 */
 	public function getTextColor(): string
 	{
-		return EnvironmentLabel::getInstance()->getSettings()->textColor;
+		return $this->_normalizeCssColor(EnvironmentLabel::getInstance()->getSettings()->textColor);
 	}
 
 	/**
@@ -130,6 +130,15 @@ class Label
 			$view->registerJs($this->getJs());
 		}
 
+	}
+
+	private function _normalizeCssColor(string $color)
+	{
+		if (preg_match('/^[0-9a-f]{3,6}$/i', $color) === 1)
+		{
+			return '#' . $color;
+		}
+		return $color;
 	}
 
 }
