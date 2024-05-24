@@ -31,10 +31,6 @@ Then, navigate to the _Plugins_ section of the control panel, find **Environment
 
 ## Configuration
 
-By default, the environment label will display the value of Craft's `CRAFT_ENVIRONMENT` constant, which is usually set to the current hostname unless you override it.
-
-_(In other words, out of the box, you get a red banner with white text that alerts you to the current hostname.)_
-
 You can use a plugin config file to tweak the appearance and text of the environment label for each installation.
 
 Simply add an `environment-label.php` file to your `config` directory.
@@ -45,15 +41,13 @@ Simply add an `environment-label.php` file to your `config` directory.
 return [
     'showLabel' => true,
     'labelText' => "My Label Text",
-    'prefixText' => null,
-    'suffixText' => null,
     'labelColor' => '#cc5643',
     'textColor' => '#ffffff',
     'targetSelector' => '#global-header:before',
 ];
 ```
 
-The full text of the label will be rendered as a Twig template, so you can also include template variables if you want:
+The text of the label will be rendered as a Twig template, so you can also include template variables to make the text dynamic:
 
 ```php
 <?php
