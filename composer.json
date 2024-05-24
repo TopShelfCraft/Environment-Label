@@ -2,7 +2,7 @@
     "name": "topshelfcraft/environment-label",
     "description": "...so you don't forget where you are.",
     "type": "craft-plugin",
-    "version": "4.0.3",
+    "version": "5.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^4.0",
+        "craftcms/cms": "^5.0",
         "topshelfcraft/base": "^4.0.1"
     },
     "autoload": {

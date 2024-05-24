@@ -9,7 +9,7 @@ use yii\base\Event;
 /**
  * @author Michael Rog <michael@michaelrog.com>, Tom Davies <tom@madebykind.com>
  * @link https://topshelfcraft.com
- * @copyright Copyright 2022, Top Shelf Craft (Michael Rog)
+ * @copyright Copyright 2024, Top Shelf Craft (Michael Rog)
  *
  * @property Label $label
  *

@@ -30,6 +30,6 @@ class Settings extends Model
 	 */
 	public ?string $suffixText = null;
 
-	public string $targetSelector = "#global-header:before";
+	public string $targetSelector = "#page-container:before";
 
 }

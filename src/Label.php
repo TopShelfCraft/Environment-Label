@@ -24,10 +24,7 @@ class Label
 
 	public function getLabelText(): string
 	{
-		// We support using `CRAFT_ENVIRONMENT` as the default label text, for backwards compatibility from 3.x.
-		// TODO: Remove the default text in 5.x.
-		$CRAFT_ENVIRONMENT = defined('CRAFT_ENVIRONMENT') ? CRAFT_ENVIRONMENT : null;
-		return (string) (EnvironmentLabel::getInstance()->getSettings()->labelText ?? $CRAFT_ENVIRONMENT);
+		return (string) EnvironmentLabel::getInstance()->getSettings()->labelText;
 	}
 
 	public function getRenderedText(): string
@@ -73,14 +70,16 @@ class Label
 			{$selector}
 			{
 				content: '{$renderedText}';
-				display: block;
+				display: flex;
+				justify-content: end;
+				align-items: center;
+				min-height: var(--header-height);
+				padding: calc(var(--padding)/2) var(--padding);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 				background-color: {$labelColor};
 				background-image: linear-gradient(rgba(0,0,0,0), rbga(0,0,0,0.1));
 				color: {$textColor};
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 				text-align: right;
-				padding: 14px 24px;
-				font-size: 15px;
 				font-weight: 700;
 				z-index: 9;
 			}
@@ -89,32 +88,7 @@ class Label
 	}
 
 	/**
-	 * @return string
-	 *
-	 * @deprecated JS features are slated for removal in 5.x. Please open an Issue if you're using these features!
-	 * @todo Remove in 5.x
-	 */
-	public function getJs(): string
-	{
-
-		/*
-		 * We include `CRAFT_ENVIRONMENT` for backwards compatibility from 3.x, but that constant is no longer
-		 * set by default in the Craft starter project, so we'll eventually remove references to it.
-		 */
-		$CRAFT_ENVIRONMENT = defined('CRAFT_ENVIRONMENT') ? CRAFT_ENVIRONMENT : null;
-		$js = "window.CRAFT_ENVIRONMENT = " . json_encode($CRAFT_ENVIRONMENT) . ";";
-
-		$props = get_object_vars(EnvironmentLabel::getInstance()->getSettings());
-		$props['renderedText'] = $this->getRenderedText();
-		$js .= "window.CRAFT_ENVIRONMENT_LABEL = " . json_encode($props) . ";";
-
-		return $js;
-
-	}
-
-	/**
-	 * If we're in an authenticated CP request, the label is added to the CP,
-	 * and some JS variables are injected for convenience debugging things in the console.
+	 * If we're in an authenticated CP request, the label is added to the CP.
 	 */
 	public function doItBaby()
 	{
@@ -126,8 +100,6 @@ class Label
 		) {
 			$view = Craft::$app->getView();
 			$view->registerCss($this->getCss());
-			// TODO: Remove in 5.x 👇
-			$view->registerJs($this->getJs());
 		}
 
 	}
