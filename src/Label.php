@@ -30,7 +30,7 @@ class Label
 	public function getRenderedText(): string
 	{
 		$fullText = $this->getPrefixText() . $this->getLabelText() . $this->getSuffixText();
-		return Craft::$app->getView()->renderString($fullText);
+		return addslashes(Craft::$app->getView()->renderString($fullText));
 	}
 
 	public function getLabelColor(): string

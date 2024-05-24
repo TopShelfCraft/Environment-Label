@@ -44,7 +44,7 @@ Simply add an `environment-label.php` file to your `config` directory.
 
 return [
     'showLabel' => true,
-    'labelText' => CRAFT_ENVIRONMENT,
+    'labelText' => "My Label Text",
     'prefixText' => null,
     'suffixText' => null,
     'labelColor' => '#cc5643',
@@ -53,13 +53,13 @@ return [
 ];
 ```
 
-For added flexibility, the full text of the label will be rendered as a Twig template, so you can also include template variables if you want:
+The full text of the label will be rendered as a Twig template, so you can also include template variables if you want:
 
 ```php
 <?php
 
 return [
-    'suffixText' => " // {{ currentUser }}",
+    'labelText' => "Editing as: {{ currentUser }}",
 );
 ```
 
@@ -79,7 +79,7 @@ This is provided as a convenience for easily testing out the plugin, but for ful
 
 ## Twig template globals
 
-_Environment Label_ makes its properties available via a Twig template global variable, so you can create your own
+_Environment Label_ makes itself available via a Twig template global variable, so you can create your own
 environment label rendering in your public templates:
 
 ```twig
@@ -88,18 +88,10 @@ environment label rendering in your public templates:
 {{ environmentLabel.textColor }}
 ```
 
-## JavaScript globals
-
-_Environment Label_ also makes its properties available as JS globals on each authenticated CP page.
-
-```js
-window.CRAFT_ENVIRONMENT
-window.CRAFT_ENVIRONMENT_LABEL
-```
 
 ## What are the system requirements?
 
-Craft 4.0+ and PHP 8.0.2+
+Craft 5.0+ and PHP 8.2+
 
 
 ## I've found a bug.
@@ -109,7 +101,7 @@ No you haven't.
 
 ## Yes, I believe I have.
 
-Well, alright. Please open a [GitHub Issue](https://github.com/topshelfcraft/Environment-Label/issues), and if you're feeling ambitious, submit a PR to the `4.x.dev` branch.
+Well, alright. Please open a [GitHub Issue](https://github.com/topshelfcraft/Environment-Label/issues), and if you're feeling ambitious, submit a PR to the `5.x.dev` branch.
 
 
 * * *

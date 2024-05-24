@@ -1,9 +1,9 @@
 <?php
 namespace TopShelfCraft\EnvironmentLabel;
 
-use craft\base\Model;
+use craft\config\BaseConfig;
 
-class Settings extends Model
+class Settings extends BaseConfig
 {
 
 	public bool $showLabel = true;

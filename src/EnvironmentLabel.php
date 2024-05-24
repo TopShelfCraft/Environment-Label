@@ -50,9 +50,9 @@ class EnvironmentLabel extends Plugin
 	/**
 	 * Creates and returns the model used to store the plugin’s settings.
 	 */
-	protected function createSettingsModel(): Settings
+	protected function createSettingsModel(): ?Settings
 	{
-		return new Settings();
+		return Settings::create();
 	}
 
 	/**
